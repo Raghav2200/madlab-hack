@@ -8,7 +8,7 @@
 #define FastIO ios::sync_with_stdio(0), cin.tie(0), cout.tie(0)
 using namespace std;
 
-int CoinWays(int coin[], int n, int x, int dp[])
+int Coinmonks(int coin[], int n, int x, int dp[])
 {
     if (x == 0)
         return 1;
@@ -18,7 +18,7 @@ int CoinWays(int coin[], int n, int x, int dp[])
     f(i, 0, n - 1)
     {
         if (x - coin[i] >= 0)
-            ans += CoinWays(coin, n, x - coin[i], dp) % MOD;
+            ans += Coinmonks(coin, n, x - coin[i], dp) % MOD;
     }
     return dp[x] = ans % MOD;
 }
@@ -30,7 +30,7 @@ void solve()
     int coin[n], dp[x + 1];
     f(i, 0, x) dp[i] = -1;
     f(i, 0, n - 1) cin >> coin[i];
-    cout << CoinWays(coin, n, x, dp) << endl;
+    cout << Coinmonks(coin, n, x, dp) << endl;
 }
 
 signed main()
